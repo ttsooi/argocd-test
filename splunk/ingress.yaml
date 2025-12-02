@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: 3.75.96.190 # ⛔ Replace with your domain
+    - host: splunk-kkutova.com # ⛔ Replace with your domain
       http:
         paths:
           - path: /splunk
