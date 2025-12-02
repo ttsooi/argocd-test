@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-application
+  name: splunk-application
   namespace: argocd
 spec:
   project: default
@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: git@github.com:ttsooi/argocd-test.git
     targetRevision: HEAD
-    path: ../
+    path: splunk/
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp

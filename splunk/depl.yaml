@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunk
+  namespace: splunk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splunk
+  template:
+    metadata:
+      labels:
+        app: splunk
+    spec:
+      containers:
+      - name: splunk
+        image: splunk/splunk:9.2.0
+        ports:
+          - containerPort: 8000 # Splunk Web UI
+          - containerPort: 8089 # Management API
+          - containerPort: 9997 # Data ingestion
+        env:
+          - name: SPLUNK_START_ARGS
+            value: "--accept-license"
+          - name: SPLUNK_PASSWORD
+            value: "ChangeMe123!" # ⛔ Change this!
+        volumeMounts:
+          - mountPath: /opt/splunk/var
+            name: splunk-data
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 90
+          timeoutSeconds: 5
+      volumes:
+      - name: splunk-data
+        persistentVolumeClaim:
+          claimName: splunk-data
