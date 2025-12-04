@@ -14,11 +14,11 @@ spec:
       labels:
         app: splunk
     spec:
-      imagePullSecrets:
+      imagePullSecrets:8
         - name: harbor-regcred
       containers:
       - name: splunk
-        image: splunk/splunk:9.2.0
+        image: harbor.kkutova.click/splunk-team/splunk-test:test
         ports:
           - containerPort: 8000 # Splunk Web UI
           - containerPort: 8089 # Management API
