@@ -14,6 +14,8 @@ spec:
       labels:
         app: splunk
     spec:
+      imagePullSecrets:
+        - name: harbor-regcred
       containers:
       - name: splunk
         image: splunk/splunk:9.2.0
