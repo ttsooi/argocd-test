@@ -18,7 +18,7 @@ spec:
         - name: harbor-regcred
       containers:
       - name: splunk
-        image: harbor.kkutova.click/splunk-team/splunk-test:test
+        image: harbor.hellfireengineer.tech/splunk-team/splunk-test:test
         ports:
           - containerPort: 8000 # Splunk Web UI
           - containerPort: 8089 # Management API
