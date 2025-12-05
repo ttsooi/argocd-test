@@ -28,6 +28,8 @@ spec:
             value: "--accept-license"
           - name: SPLUNK_PASSWORD
             value: "ChangeMe123!" # ⛔ Change this!
+          - name: SPLUNK_HEC_PORT
+            value: "8088"
         volumeMounts:
           - mountPath: /opt/splunk/var
             name: splunk-data-50
