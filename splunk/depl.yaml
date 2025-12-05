@@ -44,6 +44,6 @@ spec:
           initialDelaySeconds: 90
           timeoutSeconds: 5
       volumes:
-      - name: splunk-data
+      - name: splunk-data-50
         persistentVolumeClaim:
-          claimName: splunk-data
+          claimName: splunk-data-50
