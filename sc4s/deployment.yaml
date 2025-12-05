@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sc4s
+  namespace: sc4s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sc4s
+  template:
+    metadata:
+      labels:
+        app: sc4s
+    spec:
+      imagePullSecrets:
+        - name: sc4s-regcred
+      containers:
+        - name: sc4s
+          image: harbor.hellfireengineer.tech/splunk-team/sc4s:latest
+          envFrom:
+            - configMapRef:
+                name: sc4s-config
+          ports:
+            - containerPort: 514
+              name: syslog-tcp
+              protocol: TCP
+            - containerPort: 514
+              name: syslog-udp
+              protocol: UDP
+          volumeMounts:
+            - name: sc4s-local
+              mountPath: /opt/sc4s/local
+      volumes:
+        - name: sc4s-local
+          emptyDir: {}
