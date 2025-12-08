@@ -32,7 +32,7 @@ spec:
             value: "8088"
         volumeMounts:
           - mountPath: /opt/splunk/var
-            name: splunk-data-50
+            name: splunk-data-20
         readinessProbe:
           httpGet:
             path: /
@@ -46,6 +46,6 @@ spec:
           initialDelaySeconds: 90
           timeoutSeconds: 5
       volumes:
-      - name: splunk-data-50
+      - name: splunk-data-20
         persistentVolumeClaim:
-          claimName: splunk-data-50
+          claimName: splunk-data-20
