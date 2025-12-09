@@ -35,7 +35,7 @@ spec:
           - name: SPLUNK_ACCEPT_LICENSE
             value: "yes"
         volumeMounts:
-          - mountPath: /opt/splunk/var
+          - mountPath: /opt/splunk
             name: splunk-data-20
         readinessProbe:
           httpGet:
