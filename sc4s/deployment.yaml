@@ -14,7 +14,7 @@ spec:
         app: sc4s
     spec:
       imagePullSecrets:
-        - name: sc4s-regcred
+        - name: sc4s-harbor-regcred
       containers:
         - name: sc4s
           image: harbor.hellfireengineer.tech/splunk-team/sc4s:latest
